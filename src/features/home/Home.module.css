@@ -1,0 +1,208 @@
+/* ==========================================
+   全体のレイアウト（高さを画面いっぱいに）
+   ========================================== */
+.container {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #121214; /* 漆黒より一段深みのある墨色 */
+  color: #e2e8f0;            /* 目に優しいオフホワイトの文字 */
+  font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', sans-serif;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 60px 20px;
+}
+
+/* ==========================================
+   1. ヒーローセクション（メインタイトル周辺）
+   ========================================== */
+.hero {
+  text-align: center;
+  max-width: 800px;
+  margin-bottom: 60px;
+  animation: fadeIn 0.8s ease-out; /* 画面を開いたときにふわっと表示 */
+}
+
+.title {
+  font-size: 3rem;
+  font-weight: 800;
+  letter-spacing: 2px;
+  color: #f8fafc;
+  margin-bottom: 24px;
+  /* タイトルを少しグラデーションにしてモダンに */
+  background: linear-gradient(to right, #ffffff, #a7f3d0);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.description {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: #94a3b8; /* 説明文は少しトーンを落とす */
+  margin-bottom: 40px;
+}
+
+/* ボタンを並べるエリア */
+.btns {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* ボタンのスタイル */
+.go {
+  padding: 16px 32px;
+  font-size: 1.05rem;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  border: 1px solid #2d2d39;
+  background-color: #22c55e; /* 道場グリーン */
+  color: #f8fafc;
+  border: none;
+}
+
+.go:hover {
+  background-color: #16a34a;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(34, 197, 94, 0.3);
+}
+
+/* ==========================================
+   2. ピックアップセクション（おすすめカード）
+   ========================================== */
+.pickup {
+  width: 100%;
+  max-width: 640px;
+  margin-bottom: 60px;
+  animation: fadeIn 1s ease-out;
+}
+
+.card {
+  background: linear-gradient(135deg, #1e1e24 0%, #15151a 100%);
+  border: 1px solid #2d2d39;
+  /* 左側に道場グリーンの太線を入れて視線を引く */
+  border-left: 4px solid #22c55e; 
+  padding: 32px;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  border-color: #22c55e;
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.cardTag {
+  font-size: 0.8rem;
+  font-weight: 700;
+  background-color: rgba(34, 197, 94, 0.1);
+  color: #22c55e;
+  padding: 6px 12px;
+  border-radius: 6px;
+  border: 1px solid rgba(34, 197, 94, 0.2);
+}
+
+.cardDifficult {
+  font-size: 1.1rem;
+  color: #eab308; /* ★はゴールド（黄色） */
+  letter-spacing: 2px;
+}
+
+.card h4 {
+  font-size: 1.4rem;
+  color: #f8fafc;
+  margin: 0 0 20px 0;
+  font-weight: 700;
+}
+
+.text {
+  font-size: 0.95rem;
+  color: #cbd5e1;
+  margin: 0 0 12px 0;
+}
+
+.text strong {
+  color: #94a3b8;
+  margin-right: 6px;
+}
+
+/* 💡 カード内の「このフレーズに挑戦する」ボタンの配置調整 */
+.challenge {
+  width: 100%;
+  margin-top: 5%;
+  background-color: transparent;
+  color: #22c55e;
+  border: 1px solid rgba(34, 197, 94, 0.4);
+  padding: 12px;
+  font-weight: bold;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+.challenge:hover {
+  background-color: #22c55e;
+  color: #0f172a;
+  border-color: #22c55e;
+  cursor: pointer;
+}
+
+/* ==========================================
+   3. フッターセクション
+   ========================================== */
+.footer {
+  margin-top: auto; /* 一番下に固定 */
+  text-align: center;
+  width: 100%;
+  max-width: 600px;
+}
+
+.note {
+  font-size: 0.85rem;
+  color: #ef4444;
+  background-color: rgba(239, 68, 68, 0.05);
+  padding: 8px 16px;
+  border-radius: 6px;
+  display: inline-block;
+  margin-bottom: 20px;
+}
+
+.form {
+  margin-top: 10px;
+}
+
+.formLink {
+  font-size: 0.9rem;
+  color: #94a3b8;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.formLink:hover {
+  color: #22c55e; /* ホバーで緑に光る */
+  text-decoration: underline;
+}
+
+/* ==========================================
+   アニメーション用キーフレーム
+   ========================================== */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

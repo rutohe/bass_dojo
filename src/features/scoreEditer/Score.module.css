@@ -1,0 +1,80 @@
+/* Score.module.css */
+:root{
+    --four-width:160px;
+}
+.container {
+  display: flex;
+  flex-wrap: wrap;       /* 横幅がいっぱいになったら自動で次の行へ */
+  align-content: flex-start;
+  background-color: #1a1a1c;
+  padding: 40px 20px;
+  gap: 0;                /* ノート同士をピタッと接着 */
+  width: 100%;
+  border-radius: 12px;
+  box-sizing: border-box;
+}
+
+.note {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  height: 140px;
+  cursor: pointer;
+  background-color: #212124;
+  transition: background-color 0.2s;
+  box-sizing: border-box;
+}
+
+/* 🚧 【ここがポイント】小節の最後のノートには、太い小節線を右側に引く */
+.note.endOfBar {
+  border-right: 2px solid #64748b; 
+}
+
+/* 各音価の横幅指定 */
+.four { width: var(--four-width); }
+.eight { width: calc(var(--four-width) / 2); }
+.sixteen { width: calc(var(--four-width) / 4); }
+
+/* 🎸 3. ベースの弦 */
+.line {
+  flex: 1;
+  height: 20px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.line::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 1px;
+  background-color: #4b5563;
+  z-index: 1;
+}
+.effectarea,.tuplet{
+    height: 12.5%;
+}
+/* フレットの丸 */
+.fret {
+  width: 26px;
+  height: 26px;
+  border: 1px #4b5563 solid;
+  border-radius: 50%;
+  display: flex; 
+  align-items: center;
+  justify-content: center;
+  background-color: #22c55e;
+  z-index: 10;
+}
+.line p {
+  margin: 0;
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: bold;
+  font-size: 1rem;
+  color: #ffffff;
+  z-index: 2;
+}
