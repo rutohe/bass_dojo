@@ -1,80 +1,185 @@
-/* Score.module.css */
-:root{
-    --four-width:160px;
-}
+/* 🎼 譜面全体のコンテナ */
 .container {
-  display: flex;
-  flex-wrap: wrap;       /* 横幅がいっぱいになったら自動で次の行へ */
-  align-content: flex-start;
-  background-color: #1a1a1c;
-  padding: 40px 20px;
-  gap: 0;                /* ノート同士をピタッと接着 */
   width: 100%;
-  border-radius: 12px;
-  box-sizing: border-box;
-}
-
-.note {
+  height: 60%;
+  padding: 16px;
   display: flex;
   flex-direction: column;
+  gap: 24px;
+  background-color: #14161d;
+  user-select: none;
+  box-sizing: border-box;
+  overflow-y: scroll;
+}
+
+.rowWrapper {
+  width: 100%;
   position: relative;
-  height: 140px;
-  cursor: pointer;
-  background-color: #212124;
-  transition: background-color 0.2s;
+}
+
+.row {
+  display: flex;
+  width: 100%;
+  background: transparent;
+}
+
+/* ─── 小節（Bar） ─── */
+.bar {
+  width: 512px; 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  border-left: 2px solid #2f333d;
+  border-right: 2px solid #2f333d;
+  background-color: rgba(23, 26, 33, 0.5);
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.activeBar {
+  border-left-color: #3b82f6;
+  border-right-color: #3b82f6;
+}
+
+/* ─── 🎸 弦単位のコンテナ行 ─── */
+.stringRow {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  width: 100%;
+}
+
+/* ─── 🌟 グリッドセル（1マス 32px 固定） ─── */
+.gridCell {
+  width: 32px; 
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  position: relative;
+  flex-shrink: 0;
   box-sizing: border-box;
 }
 
-/* 🚧 【ここがポイント】小節の最後のノートには、太い小節線を右側に引く */
-.note.endOfBar {
-  border-right: 2px solid #64748b; 
-}
-
-/* 各音価の横幅指定 */
-.four { width: var(--four-width); }
-.eight { width: calc(var(--four-width) / 2); }
-.sixteen { width: calc(var(--four-width) / 4); }
-
-/* 🎸 3. ベースの弦 */
-.line {
-  flex: 1;
-  height: 20px;
+/* ─── 縦のレイヤースペース ─── */
+.effectLayer {
+  height: 16px; /* 上のエフェクト文字用（線に被らない） */
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
 }
-.line::after {
-  content: "";
+
+.stringLineLayer {
+  height: 30px; /* 下のフレット弦スペース */
+  width: 100%;
+  display: flex;
+  align-items: center; 
+}
+
+/* 🎸 ベースのフレット線（弦） */
+.stringHorizontalLine {
+  width: 100%;
+  height: 2px;
+  background-color: #3a3f4d;
+}
+
+/* ─── 🎵 フレット数字カプセル（絶対配置でフレット線の真上に被せる） ─── */
+.fretCapsule {
   position: absolute;
   left: 0;
-  right: 0;
-  top: 50%;
-  height: 1px;
-  background-color: #4b5563;
-  z-index: 1;
-}
-.effectarea,.tuplet{
-    height: 12.5%;
-}
-/* フレットの丸 */
-.fret {
-  width: 26px;
-  height: 26px;
-  border: 1px #4b5563 solid;
-  border-radius: 50%;
-  display: flex; 
+  top: 20px; 
+  background-color: #00f0ff;
+  border-radius: 11px;
+  display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #22c55e;
-  z-index: 10;
+  box-shadow: 0 0 10px #00f0ff;
+  padding: 0 10px;
+  box-sizing: border-box;
+  z-index: 5;
 }
-.line p {
-  margin: 0;
-  font-family: 'Courier New', Courier, monospace;
-  font-weight: bold;
-  font-size: 1rem;
+
+.sixteen { width: 24px; border-radius: 50%; padding: 0; left: 4px; }
+.eight   { width: 56px; }
+.four    { width: 120px; }
+
+.fretText {
+  color: #14161d;
+  font-size: 13px;
+  font-weight: 900;
+  font-family: 'Arial Black', sans-serif;
+  line-height: 1;
+}
+
+.mute {
+  background-color: transparent !important;
+  border: 2px solid #ef4444 !important;
+  box-shadow: 0 0 10px #ef4444 !important;
+}
+.mute .fretText {
+  color: #ef4444 !important;
+}
+
+/* ─── ⚪ 連符（Tuplet）用の描画バッジスタイル（デザイン調整用） ─── */
+.tupletBadge {
+  position: absolute;
+  left: 2px;
+  bottom: 0px; /* セルの最下部に小さく表示する例 */
+  height: 12px;
+  background-color: #a855f7; /* パープル系のネオンカラー */
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 4px;
+  z-index: 6;
+}
+.tupletText {
   color: #ffffff;
-  z-index: 2;
+  font-size: 9px;
+  font-weight: bold;
+}
+
+/* ─── ⚪ エフェクトホバー専用ライト枠 ─── */
+.effectPreviewSquare {
+  position: absolute;
+  top: 1px;
+  width: 26px;
+  height: 14px;
+  border: 1px solid #00f0ff;
+  border-radius: 3px;
+  background-color: rgba(0, 240, 255, 0.15);
+  box-shadow: 0 0 6px #00f0ff;
+  pointer-events: none;
+}
+
+/* ─── ⚪ 音符ホバープレビューカプセル ─── */
+.previewCapsule {
+  position: absolute;
+  left: 0;
+  top: 20px; 
+  height: 22px;
+  border: 2px solid #00f0ff;
+  border-radius: 11px;
+  background-color: rgba(0, 240, 255, 0.05);
+  box-shadow: 0 0 6px #00f0ff;
+  pointer-events: none;
+  z-index: 4;
+}
+
+.preview_sixteen { width: 24px; border-radius: 50%; left: 4px; }
+.preview_eight   { width: 54px; }
+.preview_four    { width: 118px; }
+
+/* ─── 奏法タグ（エフェクト文字） ─── */
+.effectTag {
+  font-size: 11px;
+  font-weight: 900;
+  color: #00f0ff;
+  text-shadow: 0 0 5px #00f0ff;
+  font-family: sans-serif;
+  line-height: 1;
+  z-index: 6;
 }

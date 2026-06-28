@@ -1,0 +1,54 @@
+* {
+    box-sizing: border-box;
+}
+
+.container {
+    width: 100%;
+    height: 100%; /* 💡 100%から100vhにすることで、全体の高さを画面ぴったりにロック */
+    display: flex;
+    flex-direction: column;
+    overflow: hidden; /* 💡 画面全体がガタガタ動くのを防ぐ */
+}
+
+/* 🛠️ 編集エリアを下に固定し、スライドインさせるためのラッパー */
+.editorWrapper {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 30vh; /* 💡 画面の下30%を占有 */
+  background-color: #212124;
+  transition: transform 0.3s ease-out; /* シュッと動くアニメーション */
+  z-index: 100;
+  box-shadow: 0 -8px 24px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+}
+
+/* 🔒 閉じている時は、取っ手（30px）だけ残して画面の下に隠す */
+.editorWrapper.collapsed {
+  transform: translateY(calc(100% - 30px));
+}
+
+/* 🔓 開いている時は定位置（最下部） */
+.editorWrapper.open {
+  transform: translateY(0);
+}
+
+/* 取っ手部分 */
+.dragHandle {
+  height: 30px;
+  background-color: #2e2e33;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.handleBar {
+  width: 40px;
+  height: 5px;
+  background-color: #555;
+  border-radius: 999px;
+}

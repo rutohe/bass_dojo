@@ -1,0 +1,154 @@
+* {
+    box-sizing: border-box;
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 40%;
+  background-color: #212124;
+  color: #fff;
+  border-top: 2px solid #2e2e33;
+}
+
+.tabHeader {
+  display: flex;
+  border-bottom: 1px solid #2e2e33;
+  background-color: #1a1a1c;
+  flex-shrink: 0;
+}
+
+.tabButton {
+  flex: 1;
+  padding: 12px 4px;
+  background: none;
+  border: none;
+  color: #8e8e93;
+  font-weight: bold;
+  font-size: 13px; /* 4つ並べるために少しだけフォントをシャープに */
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.tabButton.activeTab {
+  color: #3b82f6;
+  border-bottom: 2px solid #3b82f6;
+  background-color: #212124;
+}
+
+/* 👁️ ステータス表示エリア */
+.statusArea {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 16px;
+  background-color: #19191b;
+  font-size: 13px;
+  color: #aaa;
+  flex-shrink: 0;
+}
+
+.textBlue { color: #3b82f6; font-weight: bold; }
+.textPurple { color: #a78bfa; font-weight: bold; }
+
+.divider {
+  border: 0;
+  height: 1px;
+  background: #2e2e33;
+  margin: 0;
+}
+
+/* ⌨️ キーパッド全体コンテナ */
+.keyboardArea {
+  padding: 12px 16px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  overflow-y: auto;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.sectionTitle {
+  font-size: 11px;
+  color: #8e8e93;
+  margin: 0;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+/* 共通のパッドボタンの土台 */
+.pad {
+  height: 40px;
+  background-color: #2e2e33;
+  border: 1px solid #444;
+  border-radius: 6px;
+  color: #fff;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.1s ease;
+}
+
+.padButton:active {
+  background-color: #3b82f6;
+  transform: scale(0.95);
+}
+
+/* フレット数字のグリッド配置 */
+.fretGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(46px, 1fr));
+  gap: 6px;
+}
+
+/* 奏法ボタンのグリッド配置（5つ並列） */
+.effectGrid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 6px;
+}
+
+
+/* 奏法ボタンのデフォルトカラー */
+.effectButton {
+  background-color: #262136;
+  border-color: #4c3e70;
+  color: #c0a8ff;
+}
+
+/* 🔥 現在選択中の奏法パッドの強力なハイライト */
+.activeEffectPad {
+  background-color: #7c3aed !important;
+  border-color: #a78bfa !important;
+  color: #fff !important;
+  box-shadow: 0 0 10px rgba(124, 58, 237, 0.6);
+}
+/* 既存のEditer.module.cssの末尾に追加、または該当箇所を上書きしてください */
+
+.textGreen {
+  color: #10b981;
+  font-weight: bold;
+}
+
+/* 🌟 現在選択されているフレット数字ボタンの永続ハイライト */
+.padButton.activeFretPad {
+  background-color: #10b981 !important; /* パッと明るいグリーン */
+  border-color: #34d399 !important;
+  color: #fff !important;
+  box-shadow: 0 0 12px rgba(16, 185, 129, 0.6); /* ネオン風の光 */
+}
+
+/* ついでに、x（ミュート）が選択されて光った時の特別色（赤っぽく光らせる場合） */
+.padButton.muteButton.activeFretPad {
+  background-color: #ef4444 !important;
+  border-color: #f87171 !important;
+  color: #fff !important;
+  box-shadow: 0 0 12px rgba(239, 68, 68, 0.6);
+}
