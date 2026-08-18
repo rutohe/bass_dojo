@@ -1,4 +1,5 @@
 export interface Note{
+    id:string;
     start: number;
     string: number;
     fret: number;

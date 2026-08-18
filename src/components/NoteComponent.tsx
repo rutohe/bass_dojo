@@ -1,9 +1,9 @@
 import type { Note } from "../types/create"
 
-function Note({}) {
+function NoteComponent({}) {
     return(
         <>
         </>
     )
 }
-export default Note
+export default NoteComponent

@@ -3,17 +3,21 @@ import MeasureComponent from "./MeasureComponent";
 import { Box } from "@mui/material";
 interface TabProps{
     measures:Measure[];
+    strings:number;
 }
 
-function Tab({measures}:TabProps) {
+function TabComponent({measures,strings}:TabProps) {
     return(
         <Box>
             {measures.map((measure,index)=>{
                 return <MeasureComponent
-                    measure={measure}
+                    key={`measure_${index}`}
+                    strings={strings}
+                    notes={measure.notes}
                 />
             })}
         </Box>
+
     )
 }
-export default Tab
+export default TabComponent
