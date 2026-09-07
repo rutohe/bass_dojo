@@ -7,6 +7,7 @@ interface TabProps{
 }
 
 function TabComponent({measures,strings}:TabProps) {
+      console.log("measures:", measures);
     return(
         <Box>
             {measures.map((measure,index)=>{

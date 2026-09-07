@@ -5,18 +5,21 @@ import Home from "./pages/Home";
 import Create from "./pages/Create";
 import Challenge from "./pages/Challenge";
 import { mockTabPosts } from "./mock/tabpost";
+import { mockTab } from "./mock/create";
 
 import type { TabPost } from "./types/challenge";
 import type { Tab } from "./types/create";
 
 function App() {
   const [allPost,setAllPost] = useState<TabPost[]>(mockTabPosts);
-  const [score,setScore] = useState<Tab>();
+  const [score,setScore] = useState<Tab>(mockTab);
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/tab" element={<Create/>} />
+        <Route path="/create" element={<Create
+          tab={score}
+        />} />
         <Route path="/challenge" element={<Challenge
           allPost={allPost}
         />} />
