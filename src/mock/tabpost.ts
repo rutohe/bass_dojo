@@ -12,12 +12,14 @@ export const mockTabPosts: TabPost[] = [
         {
           notes: [
             {
+              id:'0',
               start: 0,
               string: 1,
               fret: 3,
               length: 4,
             },
             {
+              id:'0',
               start: 4,
               string: 1,
               fret: 5,
@@ -39,12 +41,14 @@ export const mockTabPosts: TabPost[] = [
         {
           notes: [
             {
+              id:'0',
               start: 0,
               string: 2,
               fret: 3,
               length: 4,
             },
             {
+              id:'0',
               start: 4,
               string: 2,
               fret: 5,
