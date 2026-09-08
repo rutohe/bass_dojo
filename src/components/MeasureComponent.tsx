@@ -17,9 +17,18 @@ function MeasureComponent({strings,notes}:MeasureProps) {
             {/* 基準線 */}
             <div className={styles.measureWrapper}>
                 {Array.from({length:GRID_DIVISIONS}).map((item,index)=>{
-                    return <div className={styles.measureColumn} key={`column_${index}`}>
+                    return <div 
+                                className={styles.measureColumn} 
+                                key={`column_${index}`}
+                                
+                            >
                         {ary.map((string,idx)=>{
-                            return <div key={`string_${idx}`}></div>
+                            return <div 
+                                onClick={()=>{console.log(idx)}}
+                                key={`string_${idx}`}
+                            >
+
+                            </div>
                         })}
                     </div>
                 })}

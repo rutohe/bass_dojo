@@ -1,9 +1,12 @@
-import { Box } from "@mui/material"
-import { parts } from "../types/parts"
+import { Box } from "@mui/material";
+import { Button } from "@mui/material";
+import { parts } from "../types/parts";
+
 interface Props {
   part: string;
   setPart: React.Dispatch<React.SetStateAction<string>>;
 }
+
 function EditParts({part,setPart}:Props) {
     return(
         <Box sx={{width:'100%',height:'25%',border:'1px solid black',}}>
@@ -17,12 +20,21 @@ function EditParts({part,setPart}:Props) {
                     
             }}>
                 {parts.map((item)=>{
-                    return <button
+                    return <Button
                         onClick={()=>{setPart(item)}}
-                        style={{width:'50px',height:'50px'}}
+                        sx={{
+                            width: '50px',
+                            height: '50px',
+                            border: '1px solid black',
+                            backgroundColor: part === item ? 'primary.main' : 'transparent',
+                            color: part === item ? 'white' : 'inherit',
+                            '&:hover': {
+                                backgroundColor: part === item ? 'primary.dark' : undefined,
+                            },
+                        }}
                     >
                         {item}
-                    </button>
+                    </Button>
                 })}
             </Box>
         </Box>

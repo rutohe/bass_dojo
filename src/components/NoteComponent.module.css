@@ -8,8 +8,10 @@
   box-sizing: border-box;
 
   height: 40px;
-  border: 1px solid #333;
+  border: 1px solid white;
   border-radius: 4px;
+  /* テストの色　本番はいい感じの色でやって */
+  background-color: aqua; 
 
 
   z-index: 1;

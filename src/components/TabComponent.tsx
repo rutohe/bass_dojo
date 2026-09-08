@@ -8,7 +8,6 @@ interface TabProps{
 }
 
 function TabComponent({measures,strings}:TabProps) {
-    console.log("measures:", measures);
     return(
         <Box sx={{overflowY:'scroll',width:'100%',flex:'1',padding:'2%',boxSizing:'border-box',border:'1px solid black',}}>
             {measures.map((measure,index)=>{

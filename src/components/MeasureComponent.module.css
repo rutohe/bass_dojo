@@ -1,3 +1,6 @@
+*{
+  user-select: none;
+}
 .measureWrapper {
   position: relative;
 
@@ -10,6 +13,7 @@
   box-sizing: border-box;
 
   margin-bottom: 1%;
+  background-color: white;
 }
 
 .measureColumn {
@@ -20,12 +24,19 @@
   box-sizing: border-box;
 }
 
-
 .measureColumn > div {
-  flex: 1;
-
+  flex:1;
   box-sizing: border-box;
-  border-bottom: 1px solid #999;
+  position: relative;
+}
+
+.measureColumn > div::after {
+  content: '';
+  width: 100%;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  border-top: .5px solid black;
 }
 
 .measureColumn > div:last-child {
