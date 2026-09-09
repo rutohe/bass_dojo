@@ -13,6 +13,6 @@
   /* テストの色　本番はいい感じの色でやって */
   background-color: aqua; 
 
-
+  user-select: none;
   z-index: 1;
 }

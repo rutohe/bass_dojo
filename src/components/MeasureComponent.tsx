@@ -37,7 +37,7 @@ function MeasureComponent({strings,notes,measureIndex,updateNotes}:MeasureProps)
                                 {ary.map((string,idx)=>{
                                     return <div 
                                     // fret0固定,後で編集のstateと共通させる
-                                        onClick={()=>{cellClick(index,idx,0)}}
+                                        onClick={()=>{cellClick(index,idx,1)}}
                                         key={`string_${idx}`}
                                     ></div>})}
                             </div>

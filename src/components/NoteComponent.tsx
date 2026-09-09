@@ -14,8 +14,15 @@ function NoteComponent({note,strings}:NoteProps) {
         width:`${note.length/GRID_DIVISIONS*100}%`,
     }
     return(
-        <div className={styles.note} style={style}>
+        <div 
+            className={styles.note}
+            style={style}
+            onClick={()=>{
+                console.log('note:',note);
+            }}
+        >
             {note.fret}
+            //ここにドラッグ判定用の要素入れて頑張る
         </div>
     )
 }
