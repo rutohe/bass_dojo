@@ -12,14 +12,11 @@ import type { Tab } from "./types/create";
 
 function App() {
   const [allPost,setAllPost] = useState<TabPost[]>(mockTabPosts);
-  const [score,setScore] = useState<Tab>(mockTab);
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/create" element={<Create
-          tab={score}
-        />} />
+        <Route path="/create" element={<Create/>} />
         <Route path="/challenge" element={<Challenge
           allPost={allPost}
         />} />
