@@ -8,13 +8,23 @@ import Divider from "@mui/material/Divider";
 import Rating from "@mui/material/Rating";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
+import { useMemo } from "react";
 
 import { Link } from "react-router-dom";
 
-import { mockTabPosts } from "../mock/tabpost";
+import type { TabPost } from "../types/challenge";
 
-function Home() {
-  const recommendedPosts = mockTabPosts;
+interface HomeProps {
+  allPost: TabPost[];
+  isLoading: boolean;
+}
+
+function Home({ allPost, isLoading }: HomeProps) {
+  const recommendedPosts = useMemo(() => (
+    [...allPost]
+      .sort(() => Math.random() - 0.5)
+      .slice(0, 3)
+  ), [allPost]);
 
   return (
     <Container maxWidth="lg">
@@ -144,6 +154,10 @@ function Home() {
               </CardActions>
             </Card>
           ))}
+          {isLoading && <Typography color="text.secondary">おすすめを読み込んでいます…</Typography>}
+          {!isLoading && recommendedPosts.length === 0 && (
+            <Typography color="text.secondary">まだ投稿された譜面はありません。</Typography>
+          )}
         </Box>
       </Box>
 

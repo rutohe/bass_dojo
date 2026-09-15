@@ -4,6 +4,8 @@ import { CardActions } from "@mui/material";
 import { Typography } from "@mui/material";
 import { Button } from "@mui/material";
 import Rating from "@mui/material/Rating";
+import { Link } from "react-router-dom";
+import { DEFAULT_TIME_SIGNATURE } from "../types/rhythm";
 
 import type { TabPost } from "../types/challenge"
 
@@ -12,6 +14,7 @@ interface TabPostCardProps{
 }
 
 function TabPostCard({tabPost}:TabPostCardProps) {
+    const timeSignature = tabPost.score.timeSignature ?? DEFAULT_TIME_SIGNATURE;
     return(
         <Card sx={{border:"1px solid",borderColor:"divider",p:2,mb:2,height:"45%",transition:"transform .5s",
             "&:hover":{backgroundColor: "action.hover",transform: "translateY(-4px)",boxShadow: 4,}}}>
@@ -35,10 +38,13 @@ function TabPostCard({tabPost}:TabPostCardProps) {
 
                 {/* 可能ならTABプレビュー */}
 
+                <Typography>
+                    拍子: {timeSignature.beats}/{timeSignature.beatUnit}
+                </Typography>
             </CardContent>
 
             <CardActions>
-                <Button variant="contained" sx={{mx:"auto"}}>
+                <Button component={Link} to={`/challenge/${tabPost.id}`} variant="contained" sx={{mx:"auto"}}>
                     挑戦する
                 </Button>
             </CardActions>

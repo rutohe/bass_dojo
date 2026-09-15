@@ -1,5 +1,8 @@
 import type { Note } from "../types/create";
 export const addNote = (newNote:Note,allNote:Note[]) => {
+    if(newNote.fret === ''){
+        return [...allNote];
+    }
     const existIndex = allNote.findIndex((n) => {
         if(n.string !== newNote.string) return false;
         // 重なり判定
@@ -17,7 +20,7 @@ export const addNote = (newNote:Note,allNote:Note[]) => {
         
     if (existNote.fret === newNote.fret) {
         console.log('delete');
-        return allNote.filter((note, index) => index !== existIndex);
+        return allNote.filter((_, index) => index !== existIndex);
     }
     return allNote.map((note,index)=>{
         return (index === existIndex) ? 

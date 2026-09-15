@@ -70,12 +70,14 @@ export const mockTabPosts: TabPost[] = [
         {
           notes: [
             {
+              id:'note-10',
               start: 0,
               string: 1,
               fret: 5,
               length: 2,
             },
             {
+              id:'note-11',
               start: 2,
               string: 1,
               fret: 5,
