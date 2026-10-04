@@ -63,13 +63,13 @@ function App() {
   return (
     <BrowserRouter>
       <AppBar position="static">
-        <Toolbar sx={{ gap: 2 }}>
-          <Typography variant="h6" sx={{ flexGrow: 1 }}>Bass Dojo</Typography>
+        <Toolbar sx={{ gap:{xs:1,sm:2},flexWrap:"wrap",py:1 }}>
+          <Typography variant="h6" sx={{ flexGrow:1,flexShrink:0 }}>Bass Dojo</Typography>
           {session === null ? (
             <Button color="inherit" onClick={() => setIsAuthModalOpen(true)}>ログイン</Button>
           ) : (
             <>
-              <Typography variant="body2">
+              <Typography variant="body2" sx={{maxWidth:{xs:"35%",sm:240},overflowWrap:"anywhere"}}>
                 {typeof session.user.user_metadata.display_name === "string"
                   ? session.user.user_metadata.display_name
                   : "ログイン中"}

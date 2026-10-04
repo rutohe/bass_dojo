@@ -47,7 +47,7 @@ function AuthModal({ open, onClose }: AuthModalProps) {
   };
 
   return (
-    <Dialog open={open} onClose={onClose} fullWidth maxWidth="xs">
+    <Dialog sx={{"& .MuiDialog-paper":{m:{xs:2,sm:4},width:{xs:"calc(100% - 32px)",sm:"calc(100% - 64px)"}},"& .MuiButton-root":{minHeight:44}}} open={open} onClose={onClose} fullWidth maxWidth="xs">
       <DialogTitle>ログイン</DialogTitle>
       <DialogContent sx={{ display: "grid", gap: 2, pt: "12px !important" }}>
         <ToggleButtonGroup

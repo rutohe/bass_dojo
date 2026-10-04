@@ -26,17 +26,17 @@ function ChallengeDetail({ allPost, isLoading }: ChallengeDetailProps) {
         ホームに戻る
       </Button>
       <Box sx={{ mt: 3, mb: 2 }}>
-        <Typography variant="h4" component="h1">{post.title}</Typography>
-        <Typography color="text.secondary" sx={{ mt: 1 }}>{post.description}</Typography>
+        <Typography variant="h4" component="h1" sx={{fontSize:{xs:"1.75rem",sm:"2.125rem"},overflowWrap:"anywhere"}}>{post.title}</Typography>
+        <Typography color="text.secondary" sx={{ mt:1,overflowWrap:"anywhere" }}>{post.description}</Typography>
         <Box sx={{ display: "flex", alignItems: "center", gap: 1, mt: 2 }}>
           <Typography>難易度</Typography>
           <Rating value={post.difficulty} max={5} readOnly />
           <Typography color="text.secondary">{post.difficulty}/5</Typography>
         </Box>
-        <Typography color="text.secondary" sx={{ mt: 1 }}>
+        <Typography color="text.secondary" sx={{ mt:1,overflowWrap:"anywhere" }}>
           拍子: {timeSignature.beats}/{timeSignature.beatUnit}
         </Typography>
-        <Typography variant="body2" color="text.secondary" sx={{ mt: 1 }}>
+        <Typography variant="body2" color="text.secondary" sx={{ mt:1,overflowWrap:"anywhere" }}>
           投稿者：{post.authorName}
         </Typography>
       </Box>

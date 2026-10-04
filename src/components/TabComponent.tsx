@@ -3,7 +3,7 @@ import type { Tab } from "../types/create";
 import type { Part } from "../types/parts";
 import MeasureComponent from "./MeasureComponent";
 import { Box } from "@mui/material";
-import { DEFAULT_TIME_SIGNATURE } from "../types/rhythm";
+import { DEFAULT_TIME_SIGNATURE, getGridDivisions } from "../types/rhythm";
 interface TabProps{
     strings:number,
     part:Part | '',
@@ -33,11 +33,12 @@ function TabComponent({strings,part,score,setScore,activeGrid}:TabProps) {
         })
     }
     return(
-        <Box sx={{overflowY:'scroll',width:'100%',flex:'1',padding:'2%',boxSizing:'border-box',border:'1px solid #cbd5e1',borderRadius:'10px',backgroundColor:'#f1f5f9'}}>
+        <Box role="region" aria-label="譜面編集（横スクロール可能）" tabIndex={0} sx={{overflow:'auto',width:'100%',maxHeight:{xs:'50dvh',sm:'60dvh'},minHeight:180,flexShrink:0,padding:'2%',boxSizing:'border-box',border:'1px solid #cbd5e1',borderRadius:'10px',backgroundColor:'#f1f5f9'}}>
             <Box sx={{
                 display:'grid',
+                minWidth:getGridDivisions(timeSignature)*44,
                 gridTemplateColumns:{xs:'1fr',md:'repeat(2, minmax(0, 1fr))',lg:'repeat(3, minmax(0, 1fr))'},
-                gap:0,
+                rowGap: "16px", columnGap: 0,
             }}>
                 {score.measures.map((measure,index)=>{
                     return <MeasureComponent

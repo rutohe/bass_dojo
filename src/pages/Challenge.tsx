@@ -21,10 +21,10 @@ function Challenge({allPost,isLoading}: ChallengeProps) {
     const visiblePosts = isLoading ? [] : filteredPosts;
     return(
         <>
-            <Box sx={{display:"flex",flexDirection:"column",justifyContent:"start",alignItems:"center",height:"100%"}}>
-                <Box sx={{display: "flex",alignItems: "center",justifyContent: "center",gap:4,pb:2,my:3,borderBottom:"1px solid black",width:"100%",height:"20%",boxSizing:"border-box"}}>
+            <Box sx={{display:"flex",flexDirection:"column",justifyContent:"start",alignItems:"center",minHeight:"100%",px:{xs:2,sm:3},pb:3}}>
+                <Box sx={{display: "flex",alignItems: "center",justifyContent: "center",gap:{xs:2,sm:3},flexWrap:"wrap",pb:2,my:3,borderBottom:"1px solid",borderColor:"divider",width:"100%",maxWidth:1200,boxSizing:"border-box"}}>
                     <Button component={Link} to="/" variant="outlined">ホームに戻る</Button>
-                    <Typography color="text.primary" variant="h5">
+                    <Typography color="text.primary" variant="h5" component="h1" sx={{fontSize:{xs:"1.35rem",sm:"1.5rem"}}}>
                         譜面に挑戦
                     </Typography>
                     <TextField
@@ -32,20 +32,20 @@ function Challenge({allPost,isLoading}: ChallengeProps) {
                         variant="outlined"
                         value={search}
                         onChange={(e)=>setSearch(e.target.value)}
-                        sx={{width:"40%"}}
+                        sx={{width:{xs:"100%",sm:"40%"},minWidth:0}}
                     />
                 </Box>
-                <Box sx={{overflowY:"scroll",display:"grid",pt:3,
-                gridTemplateColumns: {xs: "1fr",sm: "repeat(2, 1fr)",md: "repeat(3, 1fr)",},gap:2,flexGrow:1,width:"80%",flexShrink:0}}>
+                <Box sx={{display:"grid",alignItems:"stretch",pt:1,
+                gridTemplateColumns: {xs: "minmax(0, 1fr)",sm: "repeat(2, minmax(0, 1fr))",md: "repeat(3, minmax(0, 1fr))",},gap:2,width:"100%",maxWidth:1200}}>
                     {visiblePosts.map((post)=>{
                         return <TabPostCard
                             tabPost={post}
                             key={post.id}
                         />
                     })}
-                    {isLoading && <Typography color="text.secondary">譜面を読み込んでいます…</Typography>}
+                    {isLoading && <Typography color="text.secondary" sx={{gridColumn:"1 / -1"}} role="status">譜面を読み込んでいます…</Typography>}
                     {!isLoading && visiblePosts.length === 0 && (
-                        <Typography color="text.secondary">該当する譜面はありません。</Typography>
+                        <Typography color="text.secondary" sx={{gridColumn:"1 / -1"}} role="status">該当する譜面はありません。</Typography>
                     )}
                 </Box>
             </Box>

@@ -36,7 +36,8 @@
   top: 0;
   right: 0;
   cursor: e-resize;
-  width: 10px;
+  width: 16px;
+  touch-action: none;
   height: 100%;
   border-radius: 0 5px 5px 0;
   background: rgba(255, 255, 255, 0.22);

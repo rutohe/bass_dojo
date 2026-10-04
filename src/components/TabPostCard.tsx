@@ -16,7 +16,7 @@ interface TabPostCardProps{
 function TabPostCard({tabPost}:TabPostCardProps) {
     const timeSignature = tabPost.score.timeSignature ?? DEFAULT_TIME_SIGNATURE;
     return(
-        <Card sx={{border:"1px solid",borderColor:"divider",p:2,mb:2,height:"45%",transition:"transform .5s",
+        <Card sx={{border:"1px solid",borderColor:"divider",p:2,minWidth:0,display:"flex",flexDirection:"column",overflowWrap:"anywhere",transition:"transform .5s",
             "&:hover":{backgroundColor: "action.hover",transform: "translateY(-4px)",boxShadow: 4,}}}>
             <CardContent sx={{p:0}}>
                 <Typography>
@@ -43,8 +43,8 @@ function TabPostCard({tabPost}:TabPostCardProps) {
                 </Typography>
             </CardContent>
 
-            <CardActions>
-                <Button component={Link} to={`/challenge/${tabPost.id}`} variant="contained" sx={{mx:"auto"}}>
+            <CardActions sx={{mt:"auto",pt:2}}>
+                <Button component={Link} to={`/challenge/${tabPost.id}`} variant="contained" sx={{mx:"auto",width:{xs:"100%",sm:"auto"},minHeight:44}}>
                     挑戦する
                 </Button>
             </CardActions>

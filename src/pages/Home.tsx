@@ -31,11 +31,11 @@ function Home({ allPost, isLoading }: HomeProps) {
       {/* ヒーロー */}
       <Box
         sx={{
-          py: 10,
+          py: {xs:5,sm:10},
           textAlign: "center",
         }}
       >
-        <Typography variant="h2" component="h1">
+        <Typography variant="h2" component="h1" sx={{fontSize:{xs:"2.5rem",sm:"3.75rem"}}}>
           ベース道場
         </Typography>
 
@@ -48,7 +48,7 @@ function Home({ allPost, isLoading }: HomeProps) {
         </Typography>
 
         <Stack
-          direction="row"
+          direction={{xs:"column",sm:"row"}}
           spacing={2}
           sx={{
             mt: 4,
@@ -78,8 +78,8 @@ function Home({ allPost, isLoading }: HomeProps) {
       <Divider />
 
       {/* 今日のおすすめ */}
-      <Box sx={{ py: 8 }}>
-        <Typography variant="h4" component="h2">
+      <Box sx={{ py:{xs:4,sm:8} }}>
+        <Typography variant="h4" component="h2" sx={{fontSize:{xs:"1.75rem",sm:"2.125rem"}}}>
           今日のおすすめ
         </Typography>
 
@@ -102,7 +102,7 @@ function Home({ allPost, isLoading }: HomeProps) {
           }}
         >
           {recommendedPosts.map((post) => (
-            <Card key={post.id}>
+            <Card key={post.id} sx={{minWidth:0,overflowWrap:"anywhere",display:"flex",flexDirection:"column"}}>
               <CardContent>
                 <Typography variant="h6">
                   {post.title}
@@ -143,11 +143,11 @@ function Home({ allPost, isLoading }: HomeProps) {
                 </Typography>
               </CardContent>
 
-              <CardActions>
+              <CardActions sx={{mt:"auto"}}>
                 <Button
                   component={Link}
                   to={`/challenge/${post.id}`}
-                  size="small"
+                  size="small" sx={{minHeight:44,width:{xs:"100%",sm:"auto"}}}
                 >
                   挑戦する
                 </Button>
@@ -164,12 +164,13 @@ function Home({ allPost, isLoading }: HomeProps) {
       <Divider />
 
       {/* ベース道場の使い方 */}
-      <Box sx={{ py: 8 }}>
+      <Box sx={{ py:{xs:4,sm:8} }}>
         <Typography
           variant="h4"
           component="h2"
           sx={{
             textAlign: "center",
+            fontSize:{xs:"1.75rem",sm:"2.125rem"},
           }}
         >
           ベース道場の使い方

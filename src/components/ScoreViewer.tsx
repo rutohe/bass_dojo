@@ -19,10 +19,12 @@ function ScoreViewer({ score, activeGrid = null }: ScoreViewerProps) {
   const gridsPerBeat = getGridsPerBeat(timeSignature);
 
   return (
+    <Box role="region" aria-label="譜面（横スクロール可能）" tabIndex={0} sx={{width:"100%",overflowX:"auto"}}>
     <Box sx={{
+      minWidth:gridDivisions*28,
       display: "grid",
       gridTemplateColumns: { xs: "1fr", md: "repeat(2, minmax(0, 1fr))", lg: "repeat(3, minmax(0, 1fr))" },
-      gap: 0,
+      rowGap: "16px", columnGap: 0,
       borderRight: "2px solid #334155",
     }}>
       {score.measures.map((measure, measureIndex) => (
@@ -55,6 +57,7 @@ function ScoreViewer({ score, activeGrid = null }: ScoreViewerProps) {
           })}
         </div>
       ))}
+    </Box>
     </Box>
   );
 }

@@ -94,13 +94,13 @@ function RhythmPlayer({ score, onActiveGridChange }: RhythmPlayerProps) {
   };
 
   return (
-    <Box sx={{ display: "flex", alignItems: "center", gap: 2, flexWrap: "wrap", mb: 2 }}>
-      <Button variant="contained" onClick={isPlaying ? stop : () => void play()} disabled={!isPlaying && score.measures.every((measure) => measure.notes.length === 0)}>
+    <Box sx={{ display: "flex", alignItems: "center", gap: 2, flexWrap: "wrap", mb: 2,width:"100%",minWidth:0 }}>
+      <Button sx={{minHeight:44,width:{xs:"100%",sm:"auto"}}} variant="contained" onClick={isPlaying ? stop : () => void play()} disabled={!isPlaying && score.measures.every((measure) => measure.notes.length === 0)}>
         {isPlaying ? "停止" : "リズムを再生"}
       </Button>
-      <Box sx={{ width: 180 }}>
+      <Box sx={{ width:{xs:"100%",sm:180},px:1 }}>
         <Typography variant="body2">テンポ: {tempo} BPM</Typography>
-        <Slider value={tempo} min={40} max={180} step={1} onChange={(_, value) => setTempo(value as number)} />
+        <Slider aria-label="テンポ" value={tempo} min={40} max={180} step={1} onChange={(_, value) => setTempo(value as number)} />
       </Box>
       <Typography variant="body2" color="text.secondary">長さを音の伸び、2連・3連を等分した連続音として再生します。</Typography>
     </Box>

@@ -28,10 +28,12 @@ function EditParts({part,setPart}:Props) {
             }}>
                 {parts.map((item)=>{
                     return <Button
+                        key={item}
+                        aria-pressed={part === item}
                         onClick={()=>{setPart((prevPart)=>((prevPart === item) ? '' : item))}}
                         sx={{
                             minWidth: 0,
-                            height: '42px',
+                            height: '44px',
                             border: '1px solid',
                             borderColor: part === item ? '#1d4ed8' : (isTupletPart(item) ? '#a78bfa' : '#cbd5e1'),
                             backgroundColor: part === item ? '#2563eb' : (isTupletPart(item) ? '#f5f3ff' : 'white'),

@@ -6,7 +6,7 @@ import RhythmPlayer from "../components/RhythmPlayer"
 import type { PostDetails } from "../components/PostModal"
 import type { Tab } from "../types/create"
 import type { Part } from "../types/parts"
-import { Button, FormControl, InputLabel, MenuItem, Select } from "@mui/material"
+import { Box, Typography, Button, FormControl, InputLabel, MenuItem, Select } from "@mui/material"
 import { Link } from "react-router-dom"
 import { DEFAULT_TIME_SIGNATURE, getGridDivisions, TIME_SIGNATURES } from "../types/rhythm"
 
@@ -51,7 +51,9 @@ function Create ({onPublish,isAuthenticated}:CreateProps){
     }
 
     return(
-        <div style={{width:'100%',height:'100%',display:"flex",flexDirection:'column',justifyContent:'center',alignItems:'center',gap:'5px'}}>
+        <Box sx={{width:"100%",maxWidth:1440,mx:"auto",p:{xs:2,sm:3},display:"flex",flexDirection:"column",alignItems:"stretch",gap:2}}>
+            <Typography component="h1" variant="h5">譜面を作る</Typography>
+            <Typography variant="body2" color="text.secondary">パーツを選んで譜面をタップ。音符の右端をドラッグすると長さを変更できます。譜面は横にスクロールできます。</Typography>
             {/* 譜面表示するコンポーネント */}
             <TabComponent
                 strings={strings}
@@ -81,7 +83,7 @@ function Create ({onPublish,isAuthenticated}:CreateProps){
                 part={part}
                 setPart={setPart}
             />
-            <div style={{alignSelf:'flex-end', display:'flex', gap:'8px'}}>
+            <Box sx={{display:"flex",flexDirection:{xs:"column",sm:"row"},justifyContent:"flex-end",gap:1,"& .MuiButton-root":{minHeight:44}}}>
                 <Button component={Link} to="/" variant="outlined">ホームに戻る</Button>
                 <Button
                     variant="contained"
@@ -91,13 +93,13 @@ function Create ({onPublish,isAuthenticated}:CreateProps){
                 >
                     保存
                 </Button>
-            </div>
+            </Box>
             <PostModal
                 open={isPostModalOpen}
                 onClose={()=>setIsPostModalOpen(false)}
                 onSubmit={publish}
             />
-        </div>
+        </Box>
     )
 }
 export default Create
